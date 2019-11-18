@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import mockConfig from './helpers/mockConfig';
+import GlobalControls from './components/molecules/GlobalControls';
+import Slide from './components/molecules/Slide';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [indexHistory, setIndexHistory] = useState([0]);
+
+  const updateIndex = (toIndex) => {
+    setIndexHistory(indexHistory.concat(toIndex));
+  }
+
+  const resetIndex = () => {
+    setIndexHistory([0]);
+  }
+
+  const setIndexBack = () => {
+    const targetIndex = indexHistory.length > 3 ? indexHistory.length - 2 : 1;
+    setIndexHistory(indexHistory.slice(0, targetIndex));
+  }
+
+  const getCurrentIndex = () => {
+    return indexHistory[indexHistory.length - 1];
+  }
+
+  const currentSlide = mockConfig.slides.filter(s => s.index === getCurrentIndex())[0].components;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="wayfinder-container">
+        <div className="wayfinder-metadata">
+          <h5>{mockConfig.metadata.title}</h5>
+        </div>
+        <div className="slide-viewer">
+          <GlobalControls
+            setIndexBack={setIndexBack}
+            resetIndex={resetIndex}
+          />
+          <Slide
+            onClick={updateIndex}
+            {...currentSlide}
+          />
+        </div>
+      </div>
     </div>
   );
 }
