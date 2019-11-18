@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import mockConfig from './helpers/mockConfig';
-import GlobalControls from './components/molecules/GlobalControls';
-import Slide from './components/molecules/Slide';
+import SlideViewer from './components/molecules/SlideViewer';
 import './App.css';
 
 const App = () => {
@@ -24,23 +23,19 @@ const App = () => {
     return indexHistory[indexHistory.length - 1];
   }
 
-  const currentSlide = mockConfig.slides.filter(s => s.index === getCurrentIndex())[0].components;
   return (
     <div className="app">
       <div className="wayfinder-container">
         <div className="wayfinder-metadata">
           <h5>{mockConfig.metadata.title}</h5>
         </div>
-        <div className="slide-viewer">
-          <GlobalControls
-            setIndexBack={setIndexBack}
-            resetIndex={resetIndex}
-          />
-          <Slide
-            onClick={updateIndex}
-            {...currentSlide}
-          />
-        </div>
+        <SlideViewer
+          config={mockConfig}
+          setIndexBack={setIndexBack}
+          resetIndex={resetIndex}
+          updateIndex={updateIndex}
+          getCurrentIndex={getCurrentIndex}
+        />
       </div>
     </div>
   );

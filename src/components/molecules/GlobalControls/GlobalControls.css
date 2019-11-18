@@ -1,1 +1,4 @@
 /*GlobalControls.css*/
+.slide-viewer-controls > button:first-child {
+    margin-right: 0.5em;
+}

@@ -1,16 +1,21 @@
+@import '~antd/dist/antd.css';
+
 .wayfinder-container {
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-  min-width: 40em;
-  max-width: 56em;
-  min-height: 18em;
+  min-width: 50em;
+  max-width: 64em;
+  min-height: 24em;
   margin: 2em auto;
+  box-shadow: 0 0.5em 0.5em 0.25em rgba(0, 0, 0, 0.3);
+  background-color: #fff;
 }
 .slide-viewer {
   display: grid;
-  grid-template-columns: 8em calc(100% - 16em) 8em;
+  grid-template-columns: 12em calc(100% - 24em) 12em;
   grid-template-rows: 2em 16em 2em;
-  min-width: 40em;
+  grid-gap: 1em;
+  padding: 0 1em;
 }
 .wayfinder-metadata {
   display: flex;
