@@ -13,7 +13,7 @@ const Controls = ({setIndexBack, resetIndex}) => {
       <button
         onClick={resetIndex}
       >
-        Home
+        Restart
       </button>
     </div>
   );
