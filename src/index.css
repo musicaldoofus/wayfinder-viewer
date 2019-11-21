@@ -1,3 +1,15 @@
+:root {
+  --primary-lt: #eef5f6;
+  --primary-dk-shade: #008296;
+  --primary-dk: #006170;
+  --primary-tint: #eef5f6;
+  --accent-one: #232f3e;
+  --accent-positive: #0b8753;
+  --accent-negative: #cd3e3e;
+  --accent-gray: #6F7781;
+  --accent-gray-lt-one: #799294;
+  --accent-gray-lt-two: #bdd3d5;
+}
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -6,6 +18,8 @@ body, html {
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: 'AmazonEmber', 'Arial', sans-serif;
+  color: var(--accent-one);
 }
 #root {
   height: 100%;
@@ -13,4 +27,5 @@ body, html {
   top: 0;
   left: 0;
   width: 100%;
+  background-color: var(--accent-gray-lt-two);
 }

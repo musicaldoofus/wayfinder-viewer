@@ -1,16 +1,14 @@
 import React from 'react';
-import { Button } from 'antd';
 import './ToButton.css';
 
 const ToButton = ({onClick, label}) => {
     return (
-        <Button
-            type="primary"
-            size="large"
+        <button
+            className="to-button"
             onClick={onClick}
         >
             {label}
-        </Button>
+        </button>
     );
 }
   

@@ -1,25 +1,22 @@
-@import '~antd/dist/antd.css';
-
-.wayfinder-container {
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  min-width: 50em;
-  max-width: 64em;
-  min-height: 24em;
-  margin: 2em auto;
-  box-shadow: 0 0.5em 0.5em 0.25em rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+button {
+  display: inline-flex;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  padding: 0.5em 1em;
+  font-family: inherit;
+  font-size: 1.2em;
+  border: none;
+  /*box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);*/
+  cursor: pointer;
+  color: var(--primary-lt);
+  background-color: var(--primary-dk);
+  outline-offset: 2px;
+  /*transition: all 0.4s ease;*/
 }
-.slide-viewer {
-  display: grid;
-  grid-template-columns: 12em calc(100% - 24em) 12em;
-  grid-template-rows: 2em 16em 2em;
-  grid-gap: 1em;
-  padding: 0 1em;
+button:active, button:focus {
+  outline: 2px solid var(--primary-dk);
 }
-.wayfinder-metadata {
-  display: flex;
-}
-.wayfinder-metadata > h5 {
-  margin: 2em auto;
+button:hover {
+  background-color: var(--primary-dk-shade);
+  /*transform: scale(1.1);*/
 }
