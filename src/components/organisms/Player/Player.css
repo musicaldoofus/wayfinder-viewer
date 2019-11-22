@@ -16,7 +16,8 @@
 }
 .player-metadata-controls {
     position: relative;
-    margin: 1em;
+    padding: 1em;
+    border-bottom: 1px solid var(--accent-gray-lt-two);
 }
 .player-title {
     position: absolute;
