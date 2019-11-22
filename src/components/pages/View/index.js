@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Loading from '../../atoms/Loading';
+import ConfigNotFound from '../../atoms/ConfigNotFound';
 import Player from '../../organisms/Player';
-import getConfig from '../../../helpers/getConfig';
+const axios = require('axios');
 
 const View = ({match}) => {
-    const id = match.params.id;
+    const hashKey = match.params.id;
 
-    const [ config, setConfig ] = useState();
+    const [ dataResp, setDataResp ] = useState();
 
     useEffect(() => {
-        getConfig(id, (resp) => {
-            //console.log('got it!!', typeof d, d);
-            setConfig(resp.data.config); //only parse twice for S3 - shouldn't be an issue w/ Lambda callback
-        });
+        const reqUrl = `https://6bku93esbb.execute-api.us-west-2.amazonaws.com/prod/getWayfinderConfig?hashKey=${hashKey}`;
+        axios.get(reqUrl)
+            .then(({data}) => {
+                console.log('data', typeof data, data);
+                setDataResp(data);
+            })
+            .catch(err => console.error('err', err));
     }, []);
 
-    if (!id) return <Redirect to="/"/>;
-    return config ? <Player config={config}/> : <Loading/>;
+    if (!hashKey) return <Redirect to="/"/>;
+    if (dataResp) return dataResp.config ? <Player config={dataResp.config}/> : <ConfigNotFound/>;
+    else return <Loading/>;
 }
 
 export default View;
