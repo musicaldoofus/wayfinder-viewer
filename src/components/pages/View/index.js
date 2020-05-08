@@ -13,12 +13,9 @@ const View = ({match}) => {
     useEffect(() => {
         const reqUrl = `https://6bku93esbb.execute-api.us-west-2.amazonaws.com/prod/getWayfinderConfig?hashKey=${hashKey}`;
         axios.get(reqUrl)
-            .then(({data}) => {
-                console.log('data', typeof data, data);
-                setDataResp(data);
-            })
+            .then(({data}) => setDataResp(data))
             .catch(err => console.error('err', err));
-    }, []);
+    }, [hashKey]);
 
     if (!hashKey) return <Redirect to="/"/>;
     if (dataResp) return dataResp.config ? <Player config={dataResp.config}/> : <ConfigNotFound/>;
